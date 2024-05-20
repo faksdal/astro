@@ -17,5 +17,5 @@ void PrintDate(int _year, int _month, double _day)
 {
 	cout << "Date: " <<  _year
 	     << "-" << setw(2) << setfill('0')<< _month
-	     << "-" << setprecision(2) << _day << endl;
+	     << "-" << setw(2) << setfill('0') << _day << endl;
 }

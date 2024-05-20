@@ -16,7 +16,7 @@
 void PrintTime(int _hour, int _minute, double _second)
 {
 
-	cout << "Time: " << setprecision(2) << _hour
-	     << ":" << setprecision(2) << _minute
+	cout << "Time: " << setw(2) << setfill('0') << _hour
+	     << ":" << setw(2) << setfill('0') << _minute
 	     << ":" << setprecision(9) << _second << endl;
 }

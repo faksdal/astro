@@ -33,7 +33,7 @@ void DateSupplied(int &_year, int &_month, int &_day, bool _verbose) //, int _ho
 	if(_verbose){
 		cout << "Day: " << setw(2) << setfill('0') << _day
 			 << ", month: " << setw(2) << setfill('0') << _month
-			 << ", year: " << setw(2) << setfill('0')<< _year << endl;
+			 << ", year: " << setw(4) << setfill('0')<< _year << endl;
 	}
 
 	return;
