@@ -36,6 +36,8 @@
 
 #include <iostream>
 
+using namespace std;
+
 
 
 class JulianDay{
@@ -70,9 +72,18 @@ class JulianDay{
 
 
 
-	//
+	// The Julian day number (JDN) is the integer assigned to a whole solar day in the
+	// Julian day count starting from noon Universal Time, with Julian day number 0 assigned
+	// to the day starting at noon on Monday, January 1 4713 proleptic Julian calendar
+	// https://en.wikipedia.org/wiki/Julian_day
 	long double	JDJulianDayNumber;
+
+	// The Julian day is the continuous count of days since the beginning of the Julian period,
+	// and is used primarily by astronomers, and in software for easily calculating elapsed
+	// days between two events (e.g. food production date and sell by date).
+	// https://en.wikipedia.org/wiki/Julian_day
 	long double	JDJulianDay;
+
 	long double	JDJulianCentury;
 	long double	JDJulianCenturyNoon;
 	long double	JDJ2000;
@@ -85,7 +96,7 @@ class JulianDay{
 
 
 	void	JDParseDate(void);
-	//void	JDCalculateJDn(void);
+	void	JDCalculateJDN(void);
 
 
 public:
