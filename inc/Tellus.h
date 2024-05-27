@@ -19,13 +19,14 @@ class Tellus : public JulianDay{
 public:
 
 	enum class printFlags{
-		JD_ALL,
+		JD_NULL,
 		JD_DATE,
 		JD_TIME,
 		JD_JULIANDAY,
 		JD_TZ,
 		JD_ISLEAP,
-		JD_DOY
+		JD_DOY,
+		JD_ALL
 	};
 
 

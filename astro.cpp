@@ -45,6 +45,11 @@ int main(int argc, char *argv[])
 
 
 
+	timezone	= 0;
+	dst			= 0;
+
+
+
 	//
 	//	getopt variables
 	//
@@ -112,7 +117,7 @@ int main(int argc, char *argv[])
 								break;
 							}
 				case 3:		{
-								//timezone = atoi(optarg);
+								timezone = atoi(optarg);
 
 								break;
 							}
@@ -133,6 +138,7 @@ int main(int argc, char *argv[])
 							}
 				case 7:		{
 								printDoy = true;
+								cout << "printDoy" << endl;
 								break;
 							}
 				case 8:		{
@@ -163,15 +169,17 @@ int main(int argc, char *argv[])
 
 	Tellus *earth = new Tellus(year, month, day, hour, minute, second, timezone, verbose);
 
-	if(printAll)
+	if(printAll){
+		cout << "printall is true" << endl;
 		earth->te_print( (int)earth->printFlags::JD_ALL);
-	if(printDoy)
-			earth->te_print( (int)earth->printFlags::JD_DOY);
+	}
+	if(printDoy){
+		cout << "printdoy is true" << endl;
+		earth->te_print( (int)earth->printFlags::JD_DOY);
+	}
 
 
-	earth->te_print( (int)earth->printFlags::JD_JULIANDAY |
-			         (int)earth->printFlags::JD_TIME |
-					 (int)earth->printFlags::JD_TZ );
+	//earth->te_print( (int)earth->printFlags::JD_ALL );
 
 
 
