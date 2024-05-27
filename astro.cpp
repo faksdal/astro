@@ -35,6 +35,9 @@ int main(int argc, char *argv[])
 	bool	verbose			= false;
 	bool	timeSupplied	= false;
 	bool	dateSupplied	= false;
+	bool	printDoy		= false;
+	bool	printJD			= false;
+	bool	printAll		= false;
 
 	int		year, month, day, hour, minute, timezone, dst;
 	double	second = 0.00000000000;
@@ -53,14 +56,17 @@ int main(int argc, char *argv[])
 	//
 	char	*shortOptions = (char*)"d:t:vh";
 	struct option	longOptions[] = {
-					{"date",	required_argument,	NULL,	'd'},
-					{"time",	required_argument,	NULL,	't'},
-					{"tz",		required_argument,	NULL,	3},
-					{"lat",		required_argument,	NULL,	4},
-					{"lon",		required_argument,	NULL,	5},
-					{"dst",		required_argument,	NULL,	6},
-					{"verbose",	no_argument,		NULL,	'v'},
-					{"help",	no_argument,		NULL,	'h'},
+					{"date",		required_argument,	NULL,	'd'},
+					{"time",		required_argument,	NULL,	't'},
+					{"tz",			required_argument,	NULL,	3},
+					{"lat",			required_argument,	NULL,	4},
+					{"lon",			required_argument,	NULL,	5},
+					{"dst",			required_argument,	NULL,	6},
+					{"printdoy",	no_argument,		NULL,	7},
+					{"printjd",		no_argument,		NULL,	8},
+					{"printall",	no_argument,		NULL,	9},
+					{"verbose",		no_argument,		NULL,	'v'},
+					{"help",		no_argument,		NULL,	'h'},
 					//{"dow",		no_argument,		NULL,	'd'},
 					{0, 0, 0, 0}
 	};	//End of getopt()-variables
@@ -76,11 +82,7 @@ int main(int argc, char *argv[])
 
 
 
-	//
 	//	getopt() switch statement
-	//
-	//	TODO
-	//
 	while((c = getopt_long(argc, argv, shortOptions, longOptions, &optionIndex)) != -1){
 			switch(c){
 				case 'd':	{
@@ -129,6 +131,18 @@ int main(int argc, char *argv[])
 
 								break;
 							}
+				case 7:		{
+								printDoy = true;
+								break;
+							}
+				case 8:		{
+								printJD = true;
+								break;
+							}
+				case 9:		{
+								printAll = true;
+								break;
+							}
 				case 'v':	{
 								verbose = true;
 								break;
@@ -149,10 +163,20 @@ int main(int argc, char *argv[])
 
 	Tellus *earth = new Tellus(year, month, day, hour, minute, second, timezone, verbose);
 
-	//int _year, short _month, short _day, short _hour, short _minute, double _second, short _tz, bool _verbose)
+	if(printAll)
+		earth->te_print( (int)earth->printFlags::JD_ALL);
+	if(printDoy)
+			earth->te_print( (int)earth->printFlags::JD_DOY);
 
-	//sun->aSunPrintOutput();
+
+	earth->te_print( (int)earth->printFlags::JD_JULIANDAY |
+			         (int)earth->printFlags::JD_TIME |
+					 (int)earth->printFlags::JD_TZ );
+
+
+
 
 	return 0;
 
 } // int main(int argc, char *argv[])
+;

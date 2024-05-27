@@ -43,6 +43,7 @@ using namespace std;
 class JulianDay{
 
 
+
 	// True for dates in the Gregorian calendar, false otherwise
 	bool	JDGregorianDate;
 
@@ -58,14 +59,15 @@ class JulianDay{
 	bool	JDIsLeap;
 
 	// These holds values for the date to be converted into Julian Day Number (JDN)
-	short	JDDay, JDMonth, JDHour, JDMinute, JDTz;
+	float	JDDay;
+	short	JDMonth, JDHour, JDMinute, JDTz;
 	double	JDSecond;
 
 	//	Precision formatters for terminal printing
 	short	JDFLOATWIDTH, JDFLOATPRECISION;
 
 	// Day number of the year
-	short	JDDayOfTheYear;
+	int		JDDayOfTheYear;
 
 	//	Value of the year being converted to JDN
 	int		JDYear;
@@ -100,7 +102,8 @@ class JulianDay{
 
 
 public:
-	JulianDay(int _year, short _month, short _day, short _hour, short _minute, double _second, short _tz, bool _verbose);
+
+	JulianDay(int _year, short _month, float _day, short _hour, short _minute, double _second, short _tz, bool _verbose);
 
 	virtual ~JulianDay();
 

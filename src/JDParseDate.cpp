@@ -46,7 +46,7 @@ void JulianDay::JDParseDate(void)
 	//	If we're in 1582, check for valid date. There are ten missing dates this year as we went from
 	//	using the Julian calendar to be using the Gregorian calendar.
 	if(JDYear == 1582 && JDMonth == 10){
-		switch(JDDay){
+		switch((int)JDDay){
 		case 1:
 		case 2:
 		case 3:

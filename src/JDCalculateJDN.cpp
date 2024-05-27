@@ -63,7 +63,7 @@ void JulianDay::JDCalculateJDN(void)
 	//jdnJdnNoon += 0.5;
 
 	if(JDVerbose)
-		cout << "      Julian Day (JD): " << setw(30) << setprecision(15) << setfill(' ') << JDGetJDJulianDay() << endl;
+		cout << "      Julian Day (JD): " << setw(JDFLOATWIDTH) << setprecision(JDFLOATPRECISION) << setfill(' ') << JDGetJDJulianDay() << endl;
 
 
 /*

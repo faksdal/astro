@@ -9,7 +9,7 @@
 
 
 
-JulianDay::JulianDay(int _year, short _month, short _day, short _hour, short _minute, double _second, short _tz, bool _verbose)
+JulianDay::JulianDay(int _year, short _month, float _day, short _hour, short _minute, double _second, short _tz, bool _verbose)
 {
 
 	//	copy parameters into the class data members
@@ -23,11 +23,9 @@ JulianDay::JulianDay(int _year, short _month, short _day, short _hour, short _mi
 
 	JDTz		= _tz;
 
-
 	//	This is a fixed value used to calculate Julian century.
 	//	See Meeus, Jean Astronomical Algorithms second edition p.163 (25.1)
 	JDJ2000	= 2451545.0;
-
 
 
 	// The Julian day number (JDN) is the integer assigned to a whole solar day in the
@@ -59,9 +57,9 @@ JulianDay::JulianDay(int _year, short _month, short _day, short _hour, short _mi
 	//
 	//	Calculate the day number of the year
 	//
-	//int K = jdnIsLeap==true ? 1 : 2;
+	//int K = JDIsLeap == true ? 1 : 2;
 	//cout << "K = " << K << endl;
-	//jdDayOfTheYear = int((275 * jdnMonth) / 9) - ((jdnIsLeap ? 1 : 2) * int((jdnMonth + 9) / 12)) + jdnDay - 30;
+	JDDayOfTheYear = int((275 * JDMonth) / 9) - ((JDIsLeap ? 1 : 2) * int((JDMonth + 9) / 12)) + JDDay - 30;
 
 	//dayOfWeek = Wednesday;
 	//cout << "Day: " << dayOfWeek << endl;
